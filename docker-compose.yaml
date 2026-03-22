@@ -1,0 +1,38 @@
+services:
+  db:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: mldb
+    ports:
+      - "5432:5432"
+
+  data-gen:
+    build: .
+    command: uv run python src/data_gen.py
+    depends_on:
+      - db
+
+  pipeline:
+    build: .
+    command: uv run python src/pipeline.py --contamination 0.1
+    environment:
+      - PREFECT_API_URL=http://prefect-server:4200/api
+    depends_on:
+      - prefect-server
+      - db
+
+  prefect-server:
+    image: prefecthq/prefect:3.6.22-python3.11
+    command: prefect server start --host 0.0.0.0
+    ports:
+      - "4200:4200"
+
+  dashboard:
+    build: .
+    command: uv run streamlit run src/dashboard.py --server.address 0.0.0.0
+    ports:
+      - "8501:8501"
+    depends_on:
+      - db
