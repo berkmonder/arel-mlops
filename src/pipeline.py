@@ -84,6 +84,6 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     while True:
+        time.sleep(60)
         params = Params(**vars(args))
         ml_workflow(params)
-        time.sleep(60)

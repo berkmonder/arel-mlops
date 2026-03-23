@@ -32,5 +32,6 @@ def generate_data():
         iteration += 1
         time.sleep(60)
 
+
 if __name__ == "__main__":
     generate_data()

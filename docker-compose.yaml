@@ -16,7 +16,7 @@ services:
 
   pipeline:
     build: .
-    command: uv run python src/pipeline.py --contamination 0.1
+    command: uv run python src/pipeline.py --contamination 0.05
     environment:
       - PREFECT_API_URL=http://prefect-server:4200/api
     depends_on:

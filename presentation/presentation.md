@@ -157,7 +157,7 @@ _Modele, tahmin etmeye çalıştığı hedef hakkında yanlışlıkla "gelecekte
 
 ---
 
-# 3.  ve Tasarımı ve Tasarımı
+# 3. Model Seçimi ve Tasarımı
 
 ---
 
@@ -355,7 +355,7 @@ Toplantılarda teknik jargonda boğulmak yerine şu sorulara cevap verin:
 
 <style scoped>
 li {
-  font-size: 18px;
+  font-size: 16px;
 }
 li:nth-child(3) strong { color: green; }
 </style>
